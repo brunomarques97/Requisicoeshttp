@@ -35,19 +35,26 @@ function App() {
       },
       body:JSON.stringify(produto),
     });
+    //carregamento dinamico
+    const adicionaProdutos=await res.json();
+
+    setprodutos((prevProdutos)=> [...prevProdutos,adicionaProdutos]);
+
+    setname("");
+    setprice("");
   }
 
 
   return (
     <div className="App">
         <h1>Lista de produtos</h1>
-        <ul>
+        <ol>
           {produtos.map((produto)=>(
             <li key={produto.id}>
               {produto.name}  <span>R$: {produto.price}</span>
             </li>
           ))}
-        </ul>
+        </ol>
         <div className="adiciona">
           <form onSubmit={manipularEnvio}>
             <label>
