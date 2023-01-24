@@ -1,2 +1,2 @@
-# Requisi-es-http
+# Requisições-http
 Integração com back end usando reactjs
