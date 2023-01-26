@@ -2,24 +2,20 @@ import './App.css';
 
 import{useState,useEffect} from "react";
 
+import { chamada } from './componentes/chamada';
+
 const url="http://localhost:3000/products";
 
 function App() {
-  const [produtos,setprodutos]=useState([])
+  const [produtos,setprodutos]=useState([]);
+
+  const {data:items}=chamada(url);
+ console.log(items)
 
   const [name,setname]=useState("");
   const [price,setprice]=useState("");
 
-  //resgatando dados
-  useEffect(()=>{
-    async function fecthdata(){
-      const res =await fetch(url);
-      const data =await res.json();
-      setprodutos(data);
-    }
-    fecthdata();
-  },[]);
-
+  
   //adicionando produtos
   const manipularEnvio = async(e)=>{
     e.preventDefault();
